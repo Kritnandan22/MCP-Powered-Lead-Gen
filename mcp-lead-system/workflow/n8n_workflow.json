@@ -1,0 +1,90 @@
+{
+  "name": "Lead Gen Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "c71a337e-61e2-45a9-9e32-211516f49405",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/agent/generate",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "count", "value": "5" }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Generate Leads",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/agent/enrich",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "limit", "value": "5" }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Enrich Leads",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/agent/prepare-messages",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "limit", "value": "5" }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Draft Messages",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/agent/send",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "limit", "value": "5" },
+            { "name": "dry_run", "value": "true" }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Send Outreach",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1340, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Generate Leads", "type": "main", "index": 0 }]] },
+    "Generate Leads": { "main": [[{ "node": "Enrich Leads", "type": "main", "index": 0 }]] },
+    "Enrich Leads": { "main": [[{ "node": "Draft Messages", "type": "main", "index": 0 }]] },
+    "Draft Messages": { "main": [[{ "node": "Send Outreach", "type": "main", "index": 0 }]] }
+  }
+}

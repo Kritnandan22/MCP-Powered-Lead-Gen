@@ -1,0 +1,7 @@
+mcp
+fastapi
+uvicorn
+faker
+pydantic
+python-dotenv
+requests
