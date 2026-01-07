@@ -242,3 +242,16 @@ workflow/
 ```
 
 ---
+
+## System Screenshots
+
+### Dashboard View
+![Dashboard](Image1.jpeg)
+
+### Lead Enrichment & Personalization
+![Enrichment](Image2.jpeg)
+
+### n8n Workflow Orchestration
+![Workflow](Image3.jpeg)
+
+---
