@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# MCP-Powered-Lead-Gen
-=======
 # MCP-Powered Lead Gen & Outreach Orchestrator
 
 A fully autonomous, full-stack lead generation pipeline powered by the **Model Context Protocol (MCP)**.  
@@ -11,7 +8,7 @@ This system orchestrates the entire lifecycle of outbound sales — from synthet
 ## Features
 
 ### Synthetic Lead Generation
-- Generates 200+ realistic B2B leads using Python and Faker
+- Generates realistic B2B leads using Python and Faker
 - Valid, syntactically correct:
   - Emails
   - LinkedIn URLs
@@ -229,23 +226,6 @@ Each stage invokes MCP tools sequentially.
 **Note:**
 Generated emails are fake by default. To test successfully, replace a lead’s email in SQLite with your real email.
 
-### Example Outputs
-
-#### Monitoring Dashboard
-- Live pipeline counters
-- Lead status updates
-- Interactive table view
-
-#### Personalized Messages
-- Email A/B variants
-- LinkedIn DM variants
-- Persona-aware content
-
-#### n8n Orchestration
-- Visual execution trace
-- Retry and failure handling
-- MCP tool calls per step
-
 ---
 
 ## Project Structure (High Level)
@@ -262,15 +242,3 @@ workflow/
 ```
 
 ---
-
-## Images
-
-### Monitoring Dashboard
-![Monitoring Dashboard](images/dashboard.png)
-
-### Lead Management
-![Lead Management](images/lead_management.png)
-
-### Workflow Execution
-![Workflow Execution](images/workflow_execution.png)
->>>>>>> 3030ffc (Add README and remove non-code artifacts)
